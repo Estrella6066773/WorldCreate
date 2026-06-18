@@ -1,11 +1,2 @@
-# Cursor 通用规则（junction 联接 packages/，不纳入本仓库）
-.cursor/rules/common/
-.cursor/rules/imported/
-.cursor/personal-rules.json
-
-# 旧版平铺在 .cursor/rules/ 根目录的规则（已迁移至 common/ 同步 + local/）
-.cursor/rules/*.mdc
-
-# 本地规则保留追踪
-!.cursor/rules/local/
-!.cursor/rules/local/**
+# Cursor IDE 本地配置与规则（junction、personal-rules、local 等均不纳入本仓库）
+.cursor/
