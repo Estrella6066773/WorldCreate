@@ -1,2 +1,4 @@
 # Cursor IDE 本地配置与规则（junction、personal-rules、local 等均不纳入本仓库）
 .cursor/
+# Trae IDE 本地配置（同 cursor-workflow-rules junction 提供，不纳入本仓库）
+.trae/
