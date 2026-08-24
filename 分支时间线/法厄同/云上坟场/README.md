@@ -34,7 +34,7 @@
 |------|------|
 | 云上人 | **Cloudtype** |
 | 云城 | **Cloud City** |
-| 云邦 / 云城联邦 | **Orbis** / **Federation of Cloud Cities**（FCC） |
+| 云邦 / 云城邦联 | **Orbis** / **Confederation of Cloud Cities**（CCC） |
 | 学社 | **The Collegium** |
 | 共信会 | **The Fiducia** |
 | 离散AI | **Dispersed AI** |
