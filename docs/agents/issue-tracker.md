@@ -18,9 +18,9 @@
 
 只往你自己名下的仓库提 issue。绝不向 `mattpocock/skills`（这些 skill 的来源仓库）提 issue，除非你拥有它。fork 里 `gh` 可能默认指向上游 parent，所以本次会话第一次 `gh issue create` 之前，先用 `gh repo view --json nameWithOwner` 核对目标；目标不对就先问用户。
 
-## Pull request 是否进 triage 队列
+## 外部 pull request 是否进入分诊队列
 
-**PRs as a request surface: no。** 本仓库不把外部 PR 当作功能请求来源，`/triage` 只处理 issue，不处理 PR。
+本仓库不把外部 pull request 当作功能请求来源。分诊 skill `/triage` 只处理 issue，不处理 pull request。
 
 ## skill 说「发布到 issue tracker」时
 
