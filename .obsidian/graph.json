@@ -1,47 +1,142 @@
 {
-  "collapse-filter": true,
+  "collapse-filter": false,
   "search": "",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": true,
-  "showOrphans": true,
-  "collapse-color-groups": false,
+  "showOrphans": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
-      "query": "path:\"00-总览\"",
-      "color": { "a": 1, "rgb": 14715452 }
-    },
-    {
-      "query": "path:\"词条\"",
-      "color": { "a": 1, "rgb": 4881352 }
-    },
-    {
-      "query": "path:\"分支时间线\"",
-      "color": { "a": 1, "rgb": 5025616 }
-    },
-    {
-      "query": "path:\"绘图\"",
-      "color": { "a": 1, "rgb": 4172192 }
-    },
-    {
       "query": "path:\"草稿\"",
-      "color": { "a": 1, "rgb": 8026746 }
+      "color": {
+        "a": 1,
+        "rgb": 9079434
+      }
+    },
+    {
+      "query": "path:\"00-总览\"",
+      "color": {
+        "a": 1,
+        "rgb": 14263361
+      }
+    },
+    {
+      "query": "path:\"_templates\"",
+      "color": {
+        "a": 1,
+        "rgb": 8294270
+      }
     },
     {
       "query": "path:\"_规范\"",
-      "color": { "a": 1, "rgb": 9334728 }
+      "color": {
+        "a": 1,
+        "rgb": 7244947
+      }
+    },
+    {
+      "query": "path:\"docs\"",
+      "color": {
+        "a": 1,
+        "rgb": 7237230
+      }
+    },
+    {
+      "query": "path:\"原文\"",
+      "color": {
+        "a": 1,
+        "rgb": 10124122
+      }
+    },
+    {
+      "query": "path:\"绘图\"",
+      "color": {
+        "a": 1,
+        "rgb": 12872347
+      }
+    },
+    {
+      "query": "path:\"分支时间线/法厄同/云上坟场\"",
+      "color": {
+        "a": 1,
+        "rgb": 10185653
+      }
+    },
+    {
+      "query": "path:\"分支时间线/法厄同/击魄\"",
+      "color": {
+        "a": 1,
+        "rgb": 12737404
+      }
+    },
+    {
+      "query": "path:\"分支时间线/泰拉\"",
+      "color": {
+        "a": 1,
+        "rgb": 6200939
+      }
+    },
+    {
+      "query": "path:\"分支时间线\"",
+      "color": {
+        "a": 1,
+        "rgb": 9075896
+      }
+    },
+    {
+      "query": "path:\"词条/地点\"",
+      "color": {
+        "a": 1,
+        "rgb": 4171670
+      }
+    },
+    {
+      "query": "path:\"词条/参与者\"",
+      "color": {
+        "a": 1,
+        "rgb": 12606285
+      }
+    },
+    {
+      "query": "path:\"词条/事件\"",
+      "color": {
+        "a": 1,
+        "rgb": 14387771
+      }
+    },
+    {
+      "query": "path:\"词条/概念\"",
+      "color": {
+        "a": 1,
+        "rgb": 7109572
+      }
+    },
+    {
+      "query": "path:\"词条/时间\"",
+      "color": {
+        "a": 1,
+        "rgb": 8031398
+      }
+    },
+    {
+      "query": "path:\"词条\"",
+      "color": {
+        "a": 1,
+        "rgb": 9414304
+      }
     }
   ],
-  "collapse-display": true,
-  "showArrow": true,
-  "textFadeMultiplier": -0.4,
-  "nodeSizeMultiplier": 1.1,
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
   "lineSizeMultiplier": 1,
-  "collapse-forces": true,
+  "collapse-forces": false,
   "centerStrength": 0.518713248970312,
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.9,
-  "close": false
+  "scale": 0.5087618855792438,
+  "close": true
 }
