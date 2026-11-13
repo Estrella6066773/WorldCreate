@@ -14,8 +14,12 @@ issue 标签分三组，全部用中文：影响面 `核心`/`重要`/`补充`�
 
 ### Pending items
 
-未办结的设定事项登记为 GitHub issue（`Estrella6066773/WorldCreate`），每条三组标签各打一个。各集 `待办/*.md` 是从 issue 生成的表，**不要手工编辑**；改完 issue 跑 `python _规范/工具/同步索引.py` 重建。看全貌用本地表，检索用 `gh issue list --search`。见 `_规范/待办/README.md`。
+未办结的设定事项登记为 GitHub issue（`Estrella6066773/WorldCreate`），每条三组标签各打一个。各集 `待办/*.md` 是从 issue 生成的表，**不要手工编辑**；改完 issue 跑 `python _规范/工具/同步索引.py` 重建。看全貌用本地表，检索用 `gh issue list --search`。见 `_规范/待办/待办.md`。
 
 ### Domain docs
 
 single-context：根目录 `GLOSSARY.md` 是词汇正本，决策记录放 `docs/adr/`。见 `docs/agents/domain.md`。
+
+### Obsidian vault
+
+本仓库也是 Obsidian vault。目录主文件与文件夹同名、放在目录内（`词条/地点/马尔斯/马尔斯.md`），根目录 `README.md` 例外；正文写 Markdown 相对链接，元数据写 YAML 属性；不以点开头建目录，否则 Obsidian 不索引。见 `_规范/Obsidian 使用约定.md`。

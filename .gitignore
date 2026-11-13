@@ -2,3 +2,22 @@
 .cursor/
 # Trae IDE 本地配置（同 cursor-workflow-rules junction 提供，不纳入本仓库）
 .trae/
+# JetBrains IDE 本地配置
+.idea/
+*.iml
+
+# Obsidian：共享配置入库，机器本地状态不入库
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/plugins/*/node_modules/
+
+# Obsidian 本地回收站
+.trash/
+
+# 系统与他人协作产生的噪音
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+~$*

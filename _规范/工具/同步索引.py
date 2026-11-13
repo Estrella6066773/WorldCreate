@@ -69,14 +69,18 @@ def main():
         rows.sort(key=lambda r: (IMPACT_ORDER.get(r['impact'], 9), r['added'], r['item']))
         total += len(rows)
         title, lead = TITLES[rel]
-        out = ['# ' + title, '',
-               '| 字段 | 内容 |', '|------|------|',
-               '| 状态 | 本表由 `_规范/工具/同步索引.py` 从 GitHub issue 生成，不要手工编辑 |',
-               '| 最后更新 | 见文件提交时间 |',
-               '| 口径 | [' + ('待办口径' if rel.startswith('_规范') else '待办口径') + ']('
-               + ('README.md' if rel.startswith('_规范')
-                  else '../../../../../_规范/待办/README.md') + ') |',
-               '', lead, '',
+        stage = ('母设定' if rel.startswith('_规范')
+                 else ('击魄' if '/击魄/' in rel else '云上坟场'))
+        guide = 'README.md' if rel.startswith('_规范') else '../../../../../_规范/待办/README.md'
+        out = ['---',
+               '分类:',
+               '  - 待办',
+               '  - ' + stage,
+               '状态: 本表由 `_规范/工具/同步索引.py` 从 GitHub issue 生成，不要手工编辑',
+               '---',
+               '', '# ' + title, '',
+               '口径见 [待办口径](' + guide + ')。', '',
+               lead, '',
                '| issue | 项 | 来源 | 添加时间 | 影响面 | 急迫度 | 负责 |',
                '|-------|----|------|----------|--------|--------|------|']
         for r in rows:
@@ -92,11 +96,8 @@ def main():
                 r['added'], r['impact'], r['urgency'], r['who'],
             ]
             out.append('| ' + ' | '.join(cells) + ' |')
-        out += ['', '---', '',
-                '**分类：** 待办 | ' + ('母设定' if rel.startswith('_规范')
-                                       else ('击魄' if '/击魄/' in rel else '云上坟场'))]
         p = os.path.join(ROOT, rel)
-        open(p, 'w', encoding='utf-8').write('\n'.join(out) + '\n')
+        open(p, 'w', encoding='utf-8', newline='\n').write('\n'.join(out) + '\n')
         print(f'{len(rows):3d}  {rel}')
 
     print('生成合计', total, '｜ 登记', len(registry['items']), '｜ 未关闭', len(alive))

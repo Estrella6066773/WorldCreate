@@ -1,0 +1,47 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:\"00-总览\"",
+      "color": { "a": 1, "rgb": 14715452 }
+    },
+    {
+      "query": "path:\"词条\"",
+      "color": { "a": 1, "rgb": 4881352 }
+    },
+    {
+      "query": "path:\"分支时间线\"",
+      "color": { "a": 1, "rgb": 5025616 }
+    },
+    {
+      "query": "path:\"绘图\"",
+      "color": { "a": 1, "rgb": 4172192 }
+    },
+    {
+      "query": "path:\"草稿\"",
+      "color": { "a": 1, "rgb": 8026746 }
+    },
+    {
+      "query": "path:\"_规范\"",
+      "color": { "a": 1, "rgb": 9334728 }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": true,
+  "textFadeMultiplier": -0.4,
+  "nodeSizeMultiplier": 1.1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.9,
+  "close": false
+}

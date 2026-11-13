@@ -1,0 +1,25 @@
+# 换行统一：仓库与检出都用 LF
+# 目的：避免 Windows 下 core.autocrlf 造成的「整库显示已修改」，让 Obsidian Git 只提交真实改动。
+* text=auto eol=lf
+
+# 文档与脚本按文本处理
+*.md   text eol=lf
+*.py   text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.base text eol=lf
+*.canvas text eol=lf
+
+# 图片与二进制不做换行转换，也不参与文本 diff
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.webp     binary
+*.gif      binary
+*.aseprite binary
+*.docx     binary
+*.pdf      binary
+
+# GitHub 语言统计：本仓库是文档库，不按代码统计
+*.md linguist-documentation

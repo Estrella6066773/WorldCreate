@@ -1,0 +1,24 @@
+filters:
+  and:
+    - file.ext == "md"
+views:
+  - type: table
+    name: 全库
+    order:
+      - file.name
+      - 分类
+      - 状态
+      - file.folder
+    sort:
+      - property: file.folder
+        direction: ASC
+  - type: table
+    name: 近期改动
+    order:
+      - file.name
+      - 分类
+      - file.mtime
+    sort:
+      - property: file.mtime
+        direction: DESC
+    limit: 40
