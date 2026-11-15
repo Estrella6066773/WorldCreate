@@ -1,16 +1,32 @@
-"""检查文首属性块：受控取值、缺失字段、残留 `分类`、路径冲突。
+"""检查文首属性块：受控取值、缺失字段、故事线矛盾、污染标签、路径冲突。
 
 取值词表从 `_规范/属性与标签规范.md` 末尾的 YAML 区块读取，本脚本不另存一份。
 只报告，不改文件。用法：python _规范/工具/查属性.py
 """
 import sys, io, os, re, collections
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SPEC = os.path.join(ROOT, '_规范', '属性与标签规范.md')
 SKIP_DIRS = {'.git', '.obsidian', '.idea', '.cursor'}
+
+FIELDS = ('类型', '文档状态', '故事线', '状态', '时代')
+CITABLE = ('词条', '分支正文', '规范', '索引')
+
+# `故事线` 与路径矛盾的判据：地点词条允许出现的主线，按路径从具体到宽泛排列。
+REGION_LINES = [
+    ('词条/地点/泰拉/轨道/', {'源质实体的起源', '环带前史', '通用'}),
+    ('词条/地点/泰拉/地面/世界树/', {'自远方祖树而来的精灵们', '通用'}),
+    ('词条/地点/泰拉/地面/诸城所在之地/', {'城市与城邦', '自远方祖树而来的精灵们', '源质实体的起源', '通用'}),
+    ('词条/地点/泰拉/地面/深渊/', {'城市与城邦', '通用'}),
+    ('词条/地点/泰拉/', {'源质实体的起源', '城市与城邦', '自远方祖树而来的精灵们', '通用'}),
+    ('词条/地点/法厄同/', {'环带前史', '云上坟场', '击魄', '通用'}),
+    ('词条/地点/马尔斯/', {'开拓马尔斯', '击魄', '通用'}),
+    ('词条/地点/以太界/', {'通用'}),
+]
 
 
 def load_vocab():
@@ -40,7 +56,7 @@ def collect():
 
 
 def parse_front(path):
-    """返回 (键 -> [值] 或 字符串, 是否有属性块)。"""
+    """返回 (键 -> [值], 是否有属性块)。"""
     text = open(path, encoding='utf-8', errors='ignore').read()
     m = re.match(r'^---\r?\n([\s\S]*?)\r?\n---', text)
     if not m:
@@ -58,14 +74,24 @@ def parse_front(path):
     return data, True
 
 
+def allowed_lines(rel):
+    """返回该路径允许的 `故事线` 取值；返回 None 表示不做约束。"""
+    if rel in ('词条/地点/README.md', '词条/地点/云城.md'):
+        return {'通用'}
+    for prefix, allowed in REGION_LINES:
+        if rel.startswith(prefix):
+            return allowed
+    return None
+
+
 def main():
     vocab = load_vocab()
     errors = collections.defaultdict(list)
     legacy_cls, no_type, no_front, no_docstate = [], [], [], []
-    CITABLE = ('词条', '分支正文', '规范', '索引')
+    stray_story, bad_story, bad_tags = [], [], []
 
     for path in collect():
-        rel = os.path.relpath(path, ROOT)
+        rel = os.path.relpath(path, ROOT).replace('\\', '/')
         data, has_front = parse_front(path)
         if not has_front:
             no_front.append(rel)
@@ -77,7 +103,23 @@ def main():
         kind = (data.get('类型') or [''])[0]
         if kind in CITABLE and not data.get('文档状态'):
             no_docstate.append(rel)
-        for field in ('类型', '文档状态', '状态', '时代'):
+        if data.get('故事线') and kind != '词条':
+            stray_story.append((rel, kind))
+        allowed = allowed_lines(rel)
+        if allowed is not None:
+            for value in data.get('故事线', []):
+                if value and value not in allowed:
+                    bad_story.append((rel, value))
+        for value in data.get('tags', []):
+            if not value:
+                continue
+            if not re.match(r'^(主题|核实|来源)/', value):
+                bad_tags.append((rel, value, '裸标签或组名不在三组内'))
+                continue
+            group, _, leaf = value.partition('/')
+            if group == '主题' and leaf not in vocab.get('主题', []):
+                bad_tags.append((rel, value, '主题不在词表内'))
+        for field in FIELDS:
             for value in data.get(field, []):
                 if not value or value in vocab.get(field, []):
                     continue
@@ -86,7 +128,7 @@ def main():
                 errors[field].append((rel, value))
 
     print('=== 受控取值之外的值 ===')
-    for field in ('类型', '文档状态', '状态', '时代'):
+    for field in FIELDS:
         rows = errors.get(field, [])
         print('\n[%s] %d 处' % (field, len(rows)))
         for rel, value in rows:
@@ -115,6 +157,21 @@ def main():
     for rel in no_front:
         print('   ' + rel)
 
+    print('\n=== `故事线` 与路径矛盾 ===')
+    print('共 %d 处' % len(bad_story))
+    for rel, value in bad_story:
+        print('   %-58s  %s' % (rel, value))
+
+    print('\n=== 非词条写了 `故事线` ===')
+    print('共 %d 处' % len(stray_story))
+    for rel, kind in stray_story:
+        print('   %-58s  类型=%s' % (rel, kind))
+
+    print('\n=== 裸标签或不在三组内的标签 ===')
+    print('共 %d 处' % len(bad_tags))
+    for rel, value, why in bad_tags:
+        print('   %-52s  %-14s %s' % (rel, value, why))
+
     print('\n=== 同名文件落在不同目录（人工判断是否子类冲突）===')
     by_name = collections.defaultdict(list)
     for path in collect():
@@ -136,8 +193,9 @@ def main():
         for r in rels:
             print('      ' + r)
 
-    print('\n合计：受控取值越界 %d 处 ｜ 残留分类 %d 篇 ｜ 缺类型 %d 篇 ｜ 缺文档状态 %d 篇 ｜ 无属性块 %d 篇'
-          % (sum(len(v) for v in errors.values()), len(legacy_cls), len(no_type), len(no_docstate), len(no_front)))
+    print('\n合计：受控取值越界 %d 处 ｜ 故事线矛盾 %d 处 ｜ 故事线越界 %d 处 ｜ 裸标签 %d 处 ｜ 残留分类 %d 篇 ｜ 缺类型 %d 篇 ｜ 缺文档状态 %d 篇 ｜ 无属性块 %d 篇'
+          % (sum(len(v) for v in errors.values()), len(bad_story), len(stray_story), len(bad_tags),
+             len(legacy_cls), len(no_type), len(no_docstate), len(no_front)))
 
 
 if __name__ == '__main__':

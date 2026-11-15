@@ -24,6 +24,15 @@
     "TQ_show_task_count": "checkbox",
     "TQ_show_toolbar": "checkbox",
     "TQ_show_tree": "checkbox",
-    "TQ_show_urgency": "checkbox"
+    "TQ_show_urgency": "checkbox",
+    "类型": "text",
+    "文档状态": "text",
+    "故事线": "multitext",
+    "时代": "multitext",
+    "状态": "text",
+    "状态说明": "text",
+    "最后更新": "date",
+    "相关原文": "text",
+    "适用范围": "text"
   }
 }
