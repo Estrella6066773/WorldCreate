@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "backbone": true,
+  "spokes": true,
+  "ring": false,
+  "spacing": 1,
+  "depth": 3,
+  "cables": 0.15,
+  "inside": 0.4,
+  "colorInside": true,
+  "summary": false
+}

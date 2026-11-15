@@ -1,8 +1,6 @@
 ---
-分类:
-  - 规范
-  - Obsidian
-状态: 现行
+类型: 规范
+文档状态: 现行
 最后更新: 2026-11-14
 适用范围: 本仓库作为 Obsidian vault 打开时的显示、链接与配置约定
 ---
@@ -45,16 +43,18 @@ Obsidian 不索引 `.xxx/`，里面的笔记点不开、图片不显示。需要
 
 ```markdown
 ---
-分类:
-  - 参与者
-  - 势力
-状态: 存续（环带内战参战方）
+类型: 词条
+文档状态: 现行
+状态: 存续
+时代:
+  - 环带内战
+tags:
+  - 主题/伊勒信仰
 ---
 ```
 
-- `分类`、`时代`、`故事线` 写成列表，便于 `全库索引.base` 与属性检索按值筛选。
-- `状态` 写字符串，说明文档或实体现在的状态。
-- 字段含义见 [文档维护与版本策略](文档维护与版本策略.md)。
+- `类型`、`文档状态`、`状态` 写单个取值；`时代`、`tags` 写成列表，便于 `全库索引.base` 与属性检索按值筛选。
+- 取值必须落在 [属性与标签规范](属性与标签规范.md) 的词表里，检查脚本会报越界。`分类` 字段已退休，不再写。
 
 ## Git
 
@@ -68,7 +68,7 @@ Obsidian 不索引 `.xxx/`，里面的笔记点不开、图片不显示。需要
 | 插件 | 社区插件 id | 用途 | 设置要点 |
 |------|-------------|------|----------|
 | Folder Notes | `folder-notes` | 点文件夹名打开该目录的 `README.md` | 名称填 `README`；存放位置「文件夹内」；开启「Hide folder note」 |
-| Waypoint | `waypoint` | 在 `README.md` 里生成子笔记目录，随增删改名自动更新 | Folder Note Style 选 `Custom Filename` 并填 `README`；正文写一行 `%% Waypoint %%` 处生成目录 |
+%% Error: Cannot create a waypoint in a note that's not the folder note. For more information, check the instructions [here](https://github.com/IdreesInc/Waypoint) %%
 | Obsidian Git | `obsidian-git` | 在 Obsidian 内提交与拉取 | 保留手动确认，不要开启自动提交 |
 | Graph Folder Labels | `graph-folder-labels` | 让 `README.md` 在关系图谱里显示成所在文件夹的名字 | 文件夹笔记名填 `README`；重名规则选 `duplicates`；层数 3 |
 
@@ -97,7 +97,7 @@ Obsidian 不索引 `.xxx/`，里面的笔记点不开、图片不显示。需要
 
 ## Waypoint 怎么用
 
-1. 在本级 `README.md` 里选好位置，写一行 `%% Waypoint %%`。
+%% Error: Cannot create a waypoint in a note that's not the folder note. For more information, check the instructions [here](https://github.com/IdreesInc/Waypoint) %%
 2. 插件在该行处生成目录，列出本目录及子目录的笔记；子目录已有自己的 Waypoint 时，父级只链到子目录的 `README.md`，不重复展开。
 3. 生成出来的区块不要手改，插件会在文件增删改名时重写。
 4. 目录内容是双链，GitHub 上显示为纯文字；需要 GitHub 可读的索引，继续手写表格。

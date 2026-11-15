@@ -73,10 +73,10 @@ def main():
                  else ('击魄' if '/击魄/' in rel else '云上坟场'))
         guide = 'README.md' if rel.startswith('_规范') else '../../../../../_规范/待办/README.md'
         out = ['---',
-               '分类:',
-               '  - 待办',
-               '  - ' + stage,
-               '状态: 本表由 `_规范/工具/同步索引.py` 从 GitHub issue 生成，不要手工编辑',
+               '类型: 索引',
+               '文档状态: 现行',
+               'tags:',
+               '  - 来源/issue',
                '---',
                '', '# ' + title, '',
                '口径见 [待办口径](' + guide + ')。', '',

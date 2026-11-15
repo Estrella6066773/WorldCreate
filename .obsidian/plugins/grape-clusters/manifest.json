@@ -1,0 +1,10 @@
+{
+  "id": "grape-clusters",
+  "name": "Grape Clusters",
+  "version": "1.2.0",
+  "minAppVersion": "1.13.0",
+  "description": "Turns every folder in the graph view into its own cluster, like grapes on a vine, while every link stays visible.",
+  "author": "creativemindrito",
+  "authorUrl": "https://github.com/creativemindrito",
+  "isDesktopOnly": false
+}

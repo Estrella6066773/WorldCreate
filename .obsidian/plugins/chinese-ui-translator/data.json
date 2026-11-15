@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "serviceId": "deepseek",
+  "profiles": {
+    "deepseek": {
+      "baseUrl": "https://api.deepseek.com",
+      "model": "deepseek-flash",
+      "plan": "free",
+      "secretName": "orbsidian"
+    }
+  },
+  "uiEnabled": true
+}

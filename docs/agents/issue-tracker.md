@@ -1,3 +1,8 @@
+---
+类型: 规范
+文档状态: 现行
+---
+
 # Issue tracker：GitHub
 
 本仓库的 issues 与 spec 存放在 GitHub Issues 中，地址 `Estrella6066773/WorldCreate`。所有操作使用 `gh` CLI。

@@ -1,0 +1,47 @@
+{
+  "items": [
+    {
+      "type": "group",
+      "ctime": 1731000000000,
+      "title": "阅读入口",
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1731000000001,
+          "path": "Docs/README.md",
+          "title": "文档总索引"
+        },
+        {
+          "type": "file",
+          "ctime": 1731000000002,
+          "path": "Docs/系统设计/README.md",
+          "title": "系统设计"
+        },
+        {
+          "type": "file",
+          "ctime": 1731000000003,
+          "path": "Docs/程序设计/README.md",
+          "title": "程序设计"
+        },
+        {
+          "type": "file",
+          "ctime": 1731000000005,
+          "path": "Docs/程序设计/文档配对索引.md",
+          "title": "系统设计 ↔ 程序设计 配对索引"
+        },
+        {
+          "type": "file",
+          "ctime": 1731000000006,
+          "path": "Docs/程序设计/00-规范/测试规范.md",
+          "title": "测试规范"
+        },
+        {
+          "type": "file",
+          "ctime": 1731000000007,
+          "path": "GLOSSARY.md",
+          "title": "任务运行时术语"
+        }
+      ]
+    }
+  ]
+}

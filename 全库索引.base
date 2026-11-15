@@ -1,22 +1,133 @@
 filters:
   and:
     - file.ext == "md"
+
 views:
   - type: table
-    name: 全库
+    name: 全部
     order:
       - file.name
-      - 分类
+      - 类型
+      - 文档状态
       - 状态
+      - 状态说明
+      - 时代
       - file.folder
     sort:
       - property: file.folder
         direction: ASC
+      - property: file.name
+        direction: ASC
+
+  - type: table
+    name: 母设定词条
+    filters:
+      and:
+        - file.inFolder("词条")
+        - 类型 == "词条"
+    order:
+      - file.name
+      - 文档状态
+      - 状态
+      - 时代
+      - file.folder
+    sort:
+      - property: file.folder
+        direction: ASC
+
+  - type: table
+    name: 分支正文
+    filters:
+      and:
+        - file.inFolder("分支时间线")
+        - 类型 == "分支正文"
+    order:
+      - file.name
+      - 文档状态
+      - 时代
+      - file.folder
+    sort:
+      - property: file.folder
+        direction: ASC
+
+  - type: table
+    name: 待补与骨架
+    filters:
+      or:
+        - 文档状态 == "待补"
+        - 文档状态 == "骨架"
+    order:
+      - file.name
+      - 文档状态
+      - 状态
+      - file.folder
+    sort:
+      - property: 文档状态
+        direction: ASC
+
+  - type: table
+    name: 已消亡与中断
+    filters:
+      or:
+        - 状态 == "已消亡"
+        - 状态 == "已中断"
+    order:
+      - file.name
+      - 状态
+      - 状态说明
+      - file.folder
+    sort:
+      - property: 状态
+        direction: ASC
+
+  - type: table
+    name: 按时代
+    filters:
+      and:
+        - 时代.isEmpty() == false
+    order:
+      - file.name
+      - 时代
+      - 类型
+      - 文档状态
+      - file.folder
+    sort:
+      - property: 时代
+        direction: ASC
+
+  - type: table
+    name: 规章制度与索引
+    filters:
+      or:
+        - 类型 == "规范"
+        - 类型 == "索引"
+    order:
+      - file.name
+      - 类型
+      - 文档状态
+      - file.folder
+    sort:
+      - property: file.folder
+        direction: ASC
+
+  - type: table
+    name: 尚未归类
+    filters:
+      and:
+        - 类型.isEmpty()
+    order:
+      - file.name
+      - file.folder
+      - file.mtime
+    sort:
+      - property: file.folder
+        direction: ASC
+
   - type: table
     name: 近期改动
     order:
       - file.name
-      - 分类
+      - 类型
       - file.mtime
     sort:
       - property: file.mtime

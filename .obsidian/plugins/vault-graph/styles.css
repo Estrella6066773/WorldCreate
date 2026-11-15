@@ -1,0 +1,1084 @@
+/* Built by scripts/build-plugin.mjs from plugin/styles.css + src/page.css. */
+
+.workspace-leaf-content[data-type="vault-graph-view"] .view-content {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* github#83 -- a column, so the update note takes its own height and the page the rest */
+.vault-graph-view {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.vault-graph-view > .vault-graph {
+  flex: 1 1 0%;
+  height: auto;
+  min-height: 0;
+  /* github#4 */
+  --controls-inset: 44px;
+}
+
+/* github#83, design/0016 */
+.vault-graph-view .vg-whatsnew {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  font-size: var(--font-ui-small);
+  line-height: 1.4;
+}
+.vault-graph-view .vg-whatsnew-head {
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 14px;
+}
+.vault-graph-view .vg-whatsnew-head a { color: var(--text-accent); }
+.vault-graph-view .vg-whatsnew-chain { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.vault-graph-view .vg-whatsnew ul {
+  flex: 1 1 100%;
+  margin: 0;
+  padding-left: 1.2em;
+}
+.vault-graph-view .vg-whatsnew li { margin: 0; }
+/* github#126 */
+.vault-graph-view .vg-whatsnew-ok { flex: 0 0 auto; margin-right: auto; }
+
+/* github#83, design/0016 -- what this release added, while the note is up */
+.vault-graph-view .vg-new {
+  border-radius: 7px;
+  animation: vg-new-pulse 1.9s ease-in-out infinite;
+}
+@keyframes vg-new-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  45% { box-shadow: 0 0 0 3px var(--interactive-accent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vault-graph-view .vg-new {
+    animation: none;
+    box-shadow: 0 0 0 2px var(--interactive-accent);
+  }
+}
+
+.vg-colour-row { flex-wrap: wrap; }
+.vg-colour-row > .vault-graph.vg-tokens { flex: 1 1 100%; width: 100%; margin-top: 8px; }
+
+/* ---- src/page.css ---------------------------------------------------- */
+  /* github#77, design/0004 */
+  .vault-graph {
+    --surface-1-l: #fcfcfb;
+    --surface-1-d: #1a1a19;
+    --g1-l: #2a78d6;  --g1-d: #3987e5;
+    --g2-l: #eb6834;  --g2-d: #d95926;
+    --g3-l: #1baf7a;  --g3-d: #199e70;
+    --g4-l: #eda100;  --g4-d: #c98500;
+    --g5-l: #008300;  --g5-d: #008300;
+    --g6-l: #d3006e;  --g6-d: #eb1580;
+    --g7-l: #4a3aa7;  --g7-d: #9085e9;
+    --g8-l: #e34948;  --g8-d: #e66767;
+    --g9-l: #00aecb;  --g9-d: #009fbb;
+    --g10-l:#9412ad;  --g10-d:#b429d1;
+    --g11-l:#6f6e67;  --g11-d:#8d8c84;
+    --g12-l:#45443f;  --g12-d:#bdbcb2;
+  }
+  .vault-graph {
+    color-scheme: light;
+    --surface-0: #f4f3f0;
+    --surface-1: var(--surface-1-l);
+    --surface-2: #ffffff;
+    --border:    #dedcd5;
+    --border-strong: #c4c2b8;
+    --text-1: #0b0b0b;
+    --text-2: #52514e;
+    --text-3: #86857d;
+    /* design/0005 */
+    --edge:      #e8e7e1;
+    --edge-hi:   #2a78d6;
+    --dim:       #e6e5df;
+    --today:     #0b0b0b;
+    --g1: var(--g1-l);
+    --g2: var(--g2-l);
+    --g3: var(--g3-l);
+    --g4: var(--g4-l);
+    --g5: var(--g5-l);
+    --g6: var(--g6-l);
+    --g7: var(--g7-l);
+    --g8: var(--g8-l);
+    --g9: var(--g9-l);
+    --g10:var(--g10-l);
+    --g11:var(--g11-l);
+    --g12:var(--g12-l);
+    --n1: #6f6e67;
+    --n2: #45443f;
+    --n3: #8a897f;
+    --accent: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    .vault-graph:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-0: #121211;
+      --surface-1: var(--surface-1-d);
+      --surface-2: #232322;
+      --border:    #33332f;
+      --border-strong: #4a4a45;
+      --text-1: #ffffff;
+      --text-2: #c3c2b7;
+      --text-3: #8d8c84;
+      --edge:      #333330;
+      --edge-hi:   #3987e5;
+      --dim:       #2a2a28;
+      --today:     #ffffff;
+      --g1: var(--g1-d); --g2: var(--g2-d); --g3: var(--g3-d); --g4: var(--g4-d);
+      --g5: var(--g5-d); --g6: var(--g6-d); --g7: var(--g7-d); --g8: var(--g8-d);
+      --g9: var(--g9-d); --g10:var(--g10-d);
+      --g11:var(--g11-d); --g12:var(--g12-d);
+      --n1: #8d8c84; --n2: #bdbcb2; --n3: #77766d;
+      --accent: #3987e5;
+    }
+  }
+  .vault-graph[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: var(--surface-1-d);
+    --surface-2: #232322;
+    --border:    #33332f;
+    --border-strong: #4a4a45;
+    --text-1: #ffffff;
+    --text-2: #c3c2b7;
+    --text-3: #8d8c84;
+    --edge:      #333330;
+    --edge-hi:   #3987e5;
+    --dim:       #2a2a28;
+    --today:     #ffffff;
+    --g1: var(--g1-d); --g2: var(--g2-d); --g3: var(--g3-d); --g4: var(--g4-d);
+    --g5: var(--g5-d); --g6: var(--g6-d); --g7: var(--g7-d); --g8: var(--g8-d);
+    --g9: var(--g9-d); --g10:var(--g10-d);
+    --g11:var(--g11-d); --g12:var(--g12-d);
+    --n1: #8d8c84; --n2: #bdbcb2; --n3: #77766d;
+    --accent: #3987e5;
+  }
+
+  .vault-graph, .vault-graph * { box-sizing: border-box; }
+  .vault-graph [hidden][hidden] { display: none; }
+  .vault-graph #vg-busy[hidden],
+  .vault-graph #vg-tip[hidden],
+  .vault-graph #vg-detail[hidden],
+  .vault-graph #vg-htip[hidden],
+  .vault-graph #vg-logo[hidden],
+  .vault-graph #vg-glost[hidden],
+  .vault-graph #vg-logoInner[hidden] { display: none; }
+  .vault-graph { height: 100%; margin: 0; }
+  .vault-graph {
+    background: var(--surface-1);
+    color: var(--text-1);
+    font: 13px/1.45 ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .vault-graph { display: grid; grid-template-columns: 288px 1fr; height: 100%; }
+
+  /* ---------------------------------------------------------- sidebar ----- */
+  .vault-graph #vg-sidebar {
+    background: var(--surface-0);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    /* github#116 */
+    scrollbar-gutter: stable;
+    padding: 14px 14px 28px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .vault-graph .brand { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .vault-graph .brand h1 { font-size: 14px; margin: 0; letter-spacing: -0.01em; }
+  .vault-graph .brand .sub { font-size: 11px; color: var(--text-3); }
+
+  .vault-graph .block > .lbl {
+    font-size: 10px; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-3); margin-bottom: 7px; font-weight: 600;
+  }
+
+  /* github#86, design/0015 */
+  /* github#131, design/0019 */
+  .vault-graph #vg-tabs { display: flex; gap: 4px; margin-bottom: 9px; }
+  .vault-graph #vg-tabs .tab {
+    flex: 1 1 0; min-width: 0; font: inherit; font-size: 11px; padding: 5px 9px; cursor: pointer;
+    background: none; color: var(--text-3); border: 0; border-bottom: 2px solid transparent;
+    border-radius: 0; text-align: center; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .vault-graph #vg-tabs .tab:hover:not(:disabled) { color: var(--text-1); }
+  .vault-graph #vg-tabs .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .vault-graph #vg-tabs .tab[aria-selected="true"] {
+    color: var(--text-1); font-weight: 600; border-bottom-color: var(--accent);
+  }
+  .vault-graph #vg-tabs .tab:disabled { opacity: 0.4; cursor: default; }
+  /* github#131, design/0019 */
+  .vault-graph #vg-readnote { position: relative; }
+  .vault-graph #vg-readnote > #vg-detail {
+    position: static; width: auto; max-height: none; overflow: visible;
+    box-shadow: none; border: 0; border-radius: 0; padding: 0; background: none; z-index: auto;
+  }
+  .vault-graph #vg-readnote > #vg-detail .x { top: -2px; right: 0; }
+  .vault-graph #vg-readnote > #vg-detail h2 { margin-top: 0; }
+
+  .vault-graph .dimseg { display: inline-grid; grid-auto-flow: column; gap: 2px; vertical-align: middle; margin: -3px 0; }
+  .vault-graph .dimseg button {
+    font: inherit; font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0;
+    padding: 3px 9px; cursor: pointer; line-height: 1.3;
+    background: var(--surface-2); color: var(--text-2);
+    border: 1px solid var(--border); border-radius: 5px;
+  }
+  .vault-graph .dimseg button:hover { border-color: var(--border-strong); color: var(--text-1); }
+  .vault-graph .dimseg button[aria-pressed="true"] {
+    background: var(--accent); border-color: var(--accent); color: #fff;
+  }
+  .vault-graph .dimseg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  /* github#86 */
+  .vault-graph .dimseg.dimfull { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 0 0 6px; }
+  .vault-graph .dimseg.dimfull button { padding: 5px 8px; border-radius: 6px; text-align: center; }
+  .vault-graph .dimseg .dimct { font-variant-numeric: tabular-nums; opacity: 0.62; margin-left: 5px; font-weight: 500; }
+  .vault-graph .dimall { margin-bottom: 7px; }
+
+  .vault-graph .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .vault-graph .seg button {
+    font: inherit; font-size: 12px; padding: 6px 8px; cursor: pointer;
+    background: var(--surface-2); color: var(--text-2);
+    border: 1px solid var(--border); border-radius: 6px; text-align: left;
+  }
+  .vault-graph .seg button:hover { border-color: var(--border-strong); color: var(--text-1); }
+  .vault-graph .seg button[aria-pressed="true"] {
+    background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600;
+  }
+
+  .vault-graph input[type="search"] {
+    width: 100%; font: inherit; padding: 7px 9px; border-radius: 6px;
+    background: var(--surface-2); color: var(--text-1); border: 1px solid var(--border);
+  }
+  .vault-graph input[type="search"]:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+  .vault-graph .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  /* github#86 -- the display above would otherwise beat the hidden attribute */
+  .vault-graph .row[hidden] { display: none; }
+  .vault-graph .row .val { font-variant-numeric: tabular-nums; color: var(--text-2); font-size: 11px; }
+
+  .vault-graph #vg-legend { display: flex; flex-direction: column; gap: 1px; }
+
+  .vault-graph .lgr { display: flex; align-items: center; gap: 2px; }
+  .vault-graph .lgr.sub { padding-left: 14px; }
+  .vault-graph .lgr.sub2 { padding-left: 28px; }
+  .vault-graph .lgr.sub3 { padding-left: 42px; }
+  .vault-graph .lgr.sub4 { padding-left: 54px; }
+  /* github#3 */
+  .vault-graph .lgr-empty { opacity: 0.55; }
+  .vault-graph .lgr-empty:hover, .vault-graph .lgr-empty:focus-within { opacity: 1; }
+
+  .vault-graph .tw, .vault-graph .eye {
+    flex: none; background: none; border: 0; padding: 2px; cursor: pointer;
+    color: var(--text-3); line-height: 0; border-radius: 4px;
+  }
+  .vault-graph .tw { width: 16px; height: 18px; font: inherit; font-size: 9px; line-height: 1;
+        color: var(--text-3); }
+  .vault-graph .tw:hover, .vault-graph .eye:hover { color: var(--text-1); background: var(--surface-2); }
+  .vault-graph .tw[aria-expanded="true"] { color: var(--text-2); }
+  /* github#50 */
+  .vault-graph .tw.none, .vault-graph .eye.none, .vault-graph .lg .only.none {
+    visibility: hidden; cursor: default;
+  }
+  .vault-graph .eye { width: 20px; height: 18px; }
+  .vault-graph .eye svg { width: 14px; height: 14px; display: block; }
+  .vault-graph .eye[aria-pressed="false"] { color: var(--text-3); opacity: .6; }
+
+  .vault-graph .lg {
+    display: grid; grid-template-columns: 12px 1fr auto auto; align-items: center;
+    gap: 8px; padding: 4px 6px; border-radius: 5px; cursor: pointer;
+    border: 1px solid transparent; text-align: left; background: none;
+    font: inherit; color: var(--text-1); flex: 1; min-width: 0;
+    /* github#78, design/0006 */
+    box-shadow: none;
+  }
+  .vault-graph .lg[data-hl="on"], .vault-graph .lgs[data-hl="on"] {
+    background-color: color-mix(in srgb, var(--accent) 22%, transparent);
+    border-color: var(--accent);
+    box-shadow: inset 2px 0 0 0 var(--accent);
+    color: var(--text-1);
+  }
+  .vault-graph .lg[data-hl="on"] .ct, .vault-graph .lgs[data-hl="on"] .ct { color: var(--text-2); }
+  /* github#78, design/0006 */
+  .vault-graph .lg:hover { background-color: var(--surface-2); border-color: var(--border); }
+  /* github#78, design/0006 */
+  .vault-graph #vg-legend .lg.bar {
+    background-image: linear-gradient(var(--vg-bar), var(--vg-bar));
+    background-repeat: no-repeat;
+    background-position: 2px 100%;
+    background-size: max(var(--vg-floor, 4px), var(--vg-share)) 2px;
+  }
+  .vault-graph #vg-legend .lg.bar.bar-out { --vg-floor: 0px; }
+  /* github#86, design/0015 */
+  .vault-graph #vg-legend.lg-switching .lgr { max-height: 48px; transition: max-height .3s ease, opacity .25s ease; }
+  .vault-graph #vg-legend.lg-switching .lgr.lgr-gone { max-height: 0; opacity: 0; overflow: hidden; pointer-events: none; }
+  .vault-graph #vg-legend.lg-switching .lgr[data-old] { pointer-events: none; }
+  .vault-graph .lg .sw { width: 11px; height: 11px; border-radius: 50%; }
+  .vault-graph .lg .sw.sw-in { transform: scale(0.6); }
+  .vault-graph .lg .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .vault-graph .lg .ct { font-size: 11px; }
+  .vault-graph .lg .ct, .vault-graph .lgs .ct {
+    color: var(--text-3); font-variant-numeric: tabular-nums;
+    min-width: 3ch; text-align: right;
+  }
+  .vault-graph .lg .only, .vault-graph .lgs .only {
+    font-size: 10px; color: var(--text-3); opacity: 0; padding: 1px 4px;
+    border: 1px solid var(--border-strong); border-radius: 4px;
+    background: var(--surface-1); line-height: 1.3; white-space: nowrap;
+  }
+  .vault-graph .lgs .only { font-size: 9px; }
+  /* github#203 */
+  .vault-graph .lg .ct .subhid { font-size: 9px; font-style: italic; margin-right: 6px; white-space: nowrap; }
+  .vault-graph .lg:hover .only, .vault-graph .lgs:hover .only { opacity: 1; }
+  .vault-graph .lg .only:hover, .vault-graph .lgs .only:hover {
+    color: var(--text-1); border-color: var(--accent);
+  }
+  .vault-graph .lgs {
+    display: grid; grid-template-columns: 10px 1fr auto auto; align-items: center;
+    gap: 7px; padding: 2px 6px; color: var(--text-2);
+    font: inherit; font-size: 11px; background: none;
+    border: 1px solid transparent; border-radius: 5px;
+    flex: 1; min-width: 0; text-align: left; cursor: pointer;
+  }
+  .vault-graph .lgs:hover { background: var(--surface-2); border-color: var(--border); color: var(--text-1); }
+  .vault-graph .lgs[aria-pressed="false"] { opacity: .35; }
+  .vault-graph .lgs[aria-pressed="false"] .nm { text-decoration: line-through; }
+  .vault-graph .lgs .sw { width: 10px; height: 10px; border-radius: 2px; }
+  .vault-graph .lgs .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .vault-graph .lg[aria-pressed="false"] { opacity: .38; }
+  .vault-graph .lg[aria-pressed="false"] .nm { text-decoration: line-through; }
+
+  .vault-graph .mini { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .vault-graph #vg-stats { font-size: 11px; color: var(--text-3); line-height: 1.6; }
+  .vault-graph #vg-stats b { color: var(--text-2); font-variant-numeric: tabular-nums; font-weight: 600; }
+
+  .vault-graph .tools { display: flex; flex-wrap: wrap; gap: 5px; }
+  .vault-graph .tools button, .vault-graph .mini button, .vault-graph button.btn {
+    font: inherit; font-size: 11px; padding: 5px 8px; cursor: pointer;
+    background: var(--surface-2); color: var(--text-2);
+    border: 1px solid var(--border); border-radius: 6px;
+  }
+  .vault-graph .tools button:hover, .vault-graph .mini button:hover, .vault-graph button.btn:hover {
+    color: var(--text-1); border-color: var(--border-strong);
+  }
+  /* github#71 -- the segmented Folder order radio borrows the pressed look */
+  .vault-graph .mini button[aria-pressed="true"], .vault-graph button.btn[aria-pressed="true"],
+  .vault-graph .mini button[role="radio"][aria-checked="true"],
+  /* github#165 */
+  .vault-graph .mini button[role="menuitemradio"][aria-checked="true"] {
+    background: var(--accent); border-color: var(--accent); color: #fff;
+  }
+
+  /* --------------------------------------------------------- settings ----- */
+  .vault-graph .gear {
+    font: inherit; font-size: 13px; line-height: 1; cursor: pointer;
+    padding: 3px 5px; border-radius: 6px;
+    background: none; border: 1px solid transparent; color: var(--text-3);
+  }
+  .vault-graph .gear:hover { color: var(--text-1); border-color: var(--border); }
+  .vault-graph .gear[aria-expanded="true"] {
+    color: var(--text-1); background: var(--surface-2); border-color: var(--border);
+  }
+  .vault-graph .sr {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+
+  .vault-graph .scr { margin-bottom: 9px; }
+  .vault-graph .scrh {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 6px; margin-bottom: 4px;
+  }
+  .vault-graph .vis { flex: 0 0 auto; }
+  .vault-graph .scrh .nm {
+    flex: 1 1 auto; min-width: 0; font-size: 11px; color: var(--text-2);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .vault-graph .sws { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+  /* github#86, design/0015 */
+  .vault-graph .dimseg.setseg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 0 0 9px; }
+  .vault-graph .dimseg.setseg button { text-align: center; padding: 5px 8px; }
+  .vault-graph #vg-setbody { max-height: 46vh; overflow-y: auto; }
+  /* github#77 */
+  .vault-graph #vg-setbody .sws {
+    display: grid; grid-template-columns: repeat(auto-fill, 50px); gap: 4px;
+    justify-content: start;
+  }
+  /* github#77, design/0004 */
+  .vault-graph .swatch {
+    width: 50px; height: 54px; padding: 0; cursor: pointer; border-radius: 5px;
+    border: 1px solid var(--border); line-height: 0; flex: 0 0 auto;
+  }
+  .vault-graph .swatch .prev {
+    width: 48px; height: 52px; display: block; border-radius: 4px;
+  }
+  .vault-graph .swatch .gnd { fill: var(--surface-1); }
+  .vault-graph .swatch .d  { fill: var(--dot); }
+  .vault-graph .swatch .t1 { fill: var(--k1); }
+  .vault-graph .swatch .t2 { fill: var(--k2); }
+  .vault-graph .swatch .t3 { fill: var(--k3); }
+  @media (prefers-color-scheme: dark) {
+    .vault-graph:not([data-theme="light"]) .swatch .t1 { fill: var(--k1d); }
+    .vault-graph:not([data-theme="light"]) .swatch .t2 { fill: var(--k2d); }
+    .vault-graph:not([data-theme="light"]) .swatch .t3 { fill: var(--k3d); }
+  }
+  .vault-graph[data-theme="dark"] .swatch .t1 { fill: var(--k1d); }
+  .vault-graph[data-theme="dark"] .swatch .t2 { fill: var(--k2d); }
+  .vault-graph[data-theme="dark"] .swatch .t3 { fill: var(--k3d); }
+  .vault-graph .swatch.vg-g1  { --dot: var(--g1); background: var(--g1); }
+  .vault-graph .swatch.vg-g2  { --dot: var(--g2); background: var(--g2); }
+  .vault-graph .swatch.vg-g3  { --dot: var(--g3); background: var(--g3); }
+  .vault-graph .swatch.vg-g4  { --dot: var(--g4); background: var(--g4); }
+  .vault-graph .swatch.vg-g5  { --dot: var(--g5); background: var(--g5); }
+  .vault-graph .swatch.vg-g6  { --dot: var(--g6); background: var(--g6); }
+  .vault-graph .swatch.vg-g7  { --dot: var(--g7); background: var(--g7); }
+  .vault-graph .swatch.vg-g8  { --dot: var(--g8); background: var(--g8); }
+  .vault-graph .swatch.vg-g9  { --dot: var(--g9); background: var(--g9); }
+  .vault-graph .swatch.vg-g10 { --dot: var(--g10); background: var(--g10); }
+  .vault-graph .swatch.vg-g11 { --dot: var(--g11); background: var(--g11); }
+  .vault-graph .swatch.vg-g12 { --dot: var(--g12); background: var(--g12); }
+
+  .vault-graph.vg-tokens {
+    display: block; height: auto; overflow: visible; position: static;
+    background: none; color: inherit; font: inherit; color-scheme: inherit;
+  }
+
+  .vault-graph.vg-tokens .vg-subrow {
+    margin-left: 24px; padding-top: 6px; padding-bottom: 6px; border-top: none;
+  }
+  /* github#77 */
+  .vault-graph.vg-tokens .sws { flex-wrap: nowrap; justify-content: flex-end; }
+  .vault-graph.vg-tokens .sw-grid {
+    display: grid; grid-template-columns: repeat(4, 50px); gap: 4px;
+    justify-content: start; flex: none;
+  }
+  .vault-graph .swatch:hover { transform: scale(1.06); }
+  .vault-graph .swatch[aria-checked="true"] {
+    outline: 2px solid var(--text-1); outline-offset: 2px;
+    border-color: var(--text-1);
+  }
+  .vault-graph .swatch[aria-checked="true"][data-auto="1"] {
+    outline-color: var(--text-3); border-color: var(--text-3);
+  }
+  .vault-graph .swatch[data-auto="1"]:not([aria-checked="true"]) {
+    position: relative;
+  }
+  .vault-graph .swatch[data-auto="1"]:not([aria-checked="true"])::after {
+    content: "";
+    position: absolute;
+    left: 50%; bottom: -4px;
+    width: 6px; height: 4px;
+    transform: translateX(-50%);
+    background:
+      linear-gradient(to bottom right, transparent 50%, var(--today) 50%) left / 50% 100% no-repeat,
+      linear-gradient(to bottom left, transparent 50%, var(--today) 50%) right / 50% 100% no-repeat;
+  }
+  .vault-graph .scr .auto {
+    font: inherit; font-size: 10px; padding: 2px 6px; cursor: pointer; margin-left: 2px;
+    background: var(--surface-2); color: var(--text-3);
+    border: 1px solid var(--border); border-radius: 6px;
+  }
+  .vault-graph .scr .auto[aria-pressed="true"] { color: var(--text-1); }
+  .vault-graph .hint {
+    font-size: 10px; color: var(--text-3); line-height: 1.5; margin: 8px 0 0;
+  }
+
+  /* ------------------------------------------------------------ stage ----- */
+  .vault-graph #vg-stage { position: relative; overflow: hidden; background: var(--surface-1);
+           display: grid; grid-template-rows: auto 1fr; }
+  .vault-graph #vg-canvas { position: relative; overflow: hidden; }
+  .vault-graph canvas.vg-wedge-debug {
+    position: absolute; left: 0; top: 0; pointer-events: none; z-index: 6;
+  }
+  .vault-graph canvas.vg-wedge-debug[hidden] { display: none; }
+  .vault-graph #vg-graph { position: absolute; inset: 0; }
+  /* github#58 */
+  .vault-graph #vg-graph .vg-layer { position: absolute; }
+  .vault-graph #vg-graph .vg-layer-mouse { touch-action: none; user-select: none; }
+  /* github#4 */
+  .vault-graph {
+    --controls-inset: 12px;
+    --controls-h: 142px;
+    /* github#4, github#82 */
+    --panels-inset: 12px;
+    --ov-size: 96px;
+  }
+  .vault-graph #vg-cam {
+    position: absolute; right: var(--controls-inset); bottom: var(--controls-inset);
+    z-index: 6; display: flex; flex-direction: column; gap: 6px;
+  }
+  /* github#73, github#82, design/0013 */
+  .vault-graph #vg-mob {
+    position: absolute; left: var(--panels-inset); top: var(--panels-inset);
+    z-index: 6; display: flex; flex-direction: row; gap: 6px;
+  }
+  /* github#79, design/0017 */
+  .vault-graph #vg-ov {
+    position: absolute; bottom: var(--controls-inset);
+    right: calc(var(--controls-inset) + 31px + 8px);
+    z-index: 6; width: var(--ov-size); height: var(--ov-size); padding: 0;
+    cursor: pointer; background: var(--surface-2); color: var(--text-3);
+    border: 0; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 0 0 1px var(--border);
+    opacity: .8; transition: opacity .12s, box-shadow .12s;
+  }
+  .vault-graph #vg-ov:hover { opacity: 1; box-shadow: 0 0 0 1px var(--border-strong); }
+  .vault-graph #vg-ov:focus-visible { opacity: 1; outline: 2px solid var(--accent); outline-offset: 1px; }
+  .vault-graph #vg-ov[hidden] { display: none; }
+  .vault-graph #vg-ov canvas { display: block; width: 100%; height: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    .vault-graph #vg-ov { transition: none; }
+  }
+  .vault-graph #vg-cam button, .vault-graph #vg-mob button {
+    display: flex; align-items: center; justify-content: center;
+    width: 31px; height: 31px; padding: 0; cursor: pointer;
+    background: var(--surface-2); color: var(--text-3);
+    border: 1px solid var(--border); border-radius: 8px;
+    opacity: .55; transition: opacity .12s, color .12s, border-color .12s, background-color .12s;
+  }
+  .vault-graph #vg-cam button:hover, .vault-graph #vg-mob button:hover { opacity: 1; color: var(--text-1); border-color: var(--border-strong); }
+  .vault-graph #vg-cam button:focus-visible, .vault-graph #vg-mob button:focus-visible { opacity: 1; outline: 2px solid var(--accent); outline-offset: 1px; }
+  .vault-graph #vg-pan { margin-top: 4px; }
+  .vault-graph #vg-pan[aria-pressed="true"], .vault-graph #vg-band[aria-pressed="true"], .vault-graph #vg-sheet[aria-expanded="true"] {
+    opacity: .8; color: var(--accent); border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 12%, var(--surface-2));
+  }
+  .vault-graph #vg-pan[aria-pressed="true"]:hover { opacity: 1; color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) {
+    .vault-graph #vg-cam button { transition: none; }
+  }
+
+  /* ------------------------------------------- the band, under a host ----- */
+  /* github#178, design/0013 */
+  .vault-graph #vg-heat :where(button),
+  .vault-graph #vg-heat :where(input) {
+    height: auto; box-shadow: none;
+  }
+
+  .vault-graph #vg-compact {
+    display: flex; align-items: center; justify-content: center;
+    width: var(--vg-hrow-h, 22px); height: var(--vg-hrow-h, 22px);
+    padding: 0; cursor: pointer; flex: 0 0 auto; margin-left: 8px;
+    background: var(--surface-2); color: var(--text-3);
+    border: 1px solid var(--border); border-radius: 6px;
+    transition: color .12s, border-color .12s, background-color .12s;
+  }
+  .vault-graph #vg-compact:hover { color: var(--text-1); border-color: var(--border-strong); }
+  .vault-graph #vg-compact:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .vault-graph #vg-compact[aria-pressed="true"] {
+    color: var(--accent); border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 14%, var(--surface-2));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vault-graph #vg-compact { transition: none; }
+  }
+
+  .vault-graph #vg-rangebox {
+    display: flex; align-items: center; gap: 5px; flex: 0 0 auto; margin-left: 4px;
+  }
+  .vault-graph #vg-rangebox .arw { color: var(--text-3); font-size: 11px; }
+  .vault-graph #vg-rangebox .dt {
+    font: 11px/1.3 ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+    color: var(--text-2); background: var(--surface-2);
+    border: 1px solid var(--border); border-radius: 5px;
+    padding: 0 4px; width: 104px; min-width: 0; height: var(--vg-hrow-h);
+  }
+  .vault-graph #vg-rangebox .dt:hover { border-color: var(--border-strong); color: var(--text-1); }
+  .vault-graph #vg-rangebox .dt:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 1px; color: var(--text-1);
+  }
+  .vault-graph #vg-rangebox .dt::-webkit-calendar-picker-indicator {
+    opacity: .45; cursor: pointer; padding: 0; margin-left: 2px;
+  }
+  .vault-graph #vg-rangebox .dt::-webkit-calendar-picker-indicator:hover { opacity: .9; }
+
+  .vault-graph #vg-years { position: relative; height: 16px; margin-top: -5px; }
+  .vault-graph #vg-years button {
+    position: absolute; top: 0; transform: translateX(-50%);
+    /* github#23 */
+    height: 14px;
+    padding: 0 5px; cursor: pointer; border-radius: 4px;
+    background: color-mix(in oklab, var(--text-3) 14%, transparent);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    font: 600 9.5px/14px ui-sans-serif, "Segoe UI", system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    transition: background-color .12s, color .12s, border-color .12s;
+  }
+  .vault-graph #vg-years button:hover {
+    color: var(--text-1); border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 26%, transparent);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vault-graph #vg-years button { transition: none; }
+  }
+  .vault-graph #vg-years button:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 0; color: var(--text-1);
+  }
+  .vault-graph #vg-years button[aria-pressed="true"] {
+    color: var(--accent); background: color-mix(in oklab, var(--accent) 14%, transparent);
+  }
+
+  /* ---------------------------------------------------------- heatmap ----- */
+  .vault-graph #vg-heat {
+    position: relative; padding: 9px 14px 8px;
+    border-bottom: 1px solid var(--border); background: var(--surface-0);
+    display: flex; flex-direction: column; gap: 6px; min-width: 0;
+  }
+  /* github#82, design/0010 */
+  .vault-graph[data-band="off"] #vg-heat { display: none; }
+  .vault-graph[data-band="off"] #vg-stage { grid-template-rows: 1fr; }
+  /* github#70, design/0010 */
+  .vault-graph #vg-heat .hrow {
+    --vg-hrow-h: 26px;
+    display: flex; align-items: center; gap: 10px; min-width: 0;
+  }
+  .vault-graph #vg-heat .hrow .lbl {
+    font-size: 10px; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-3); font-weight: 600; flex: 0 0 auto;
+  }
+  .vault-graph #vg-heatnote {
+    font-size: 11px; color: var(--text-3); min-width: 0; flex: 1 1 auto;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  /* ------------------------------------------------- the recent lens, github#70 ----- */
+  /* github#70, design/0010 */
+  .vault-graph #vg-heatsrc {
+    display: inline-flex; flex: 0 0 auto; border: 1px solid var(--border);
+    border-radius: 6px; overflow: hidden; height: var(--vg-hrow-h);
+  }
+  /* github#70, design/0010 */
+  /* github#170 */
+  .vault-graph #vg-heatsrc button {
+    font: inherit; font-size: 11px; font-weight: 500; line-height: 1;
+    display: flex; align-items: center; padding: 0 9px; cursor: pointer;
+    background: var(--surface-2); color: var(--text-2);
+    border: 0; border-left: 1px solid var(--border);
+    border-radius: 0; min-height: 0; box-shadow: none;
+  }
+  .vault-graph #vg-heatsrc button:first-child { border-left: 0; }
+  .vault-graph #vg-heatsrc button:hover { color: var(--text-1); }
+  .vault-graph #vg-heatsrc button[aria-pressed="true"] {
+    background: var(--accent); color: #fff;
+  }
+  .vault-graph #vg-recent { display: flex; align-items: center; gap: 4px; flex: 0 0 auto; }
+  .vault-graph #vg-recent .chip {
+    display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
+    height: var(--vg-hrow-h); padding-block: 0;
+  }
+  /* github#70, design/0010 */
+  .vault-graph #vg-recent .chip .n {
+    font-variant-numeric: tabular-nums; color: var(--text-3); font-size: 10px;
+    min-width: var(--vg-count-ch, 3ch); text-align: right;
+  }
+  .vault-graph #vg-recent .chip[aria-pressed="true"] .n { color: #fff; opacity: .8; }
+  /* github#70, design/0010 */
+  .vault-graph #vg-recent .chip:disabled { opacity: .45; cursor: default; }
+  /* ------------------------------------------------------ date range ----- */
+  .vault-graph #vg-ribbon {
+    display: block; width: 100%; cursor: crosshair;
+    touch-action: none;
+  }
+  .vault-graph #vg-ribbon[data-grab="edge"] { cursor: ew-resize; }
+  .vault-graph #vg-ribbon[data-grab="body"] { cursor: grab; }
+  .vault-graph #vg-ribbon[data-grab="moving"] { cursor: grabbing; }
+  .vault-graph #vg-rangenote {
+    font-size: 11px; color: var(--text-2); flex: 0 0 auto;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .vault-graph #vg-rangeall {
+    flex: 0 0 auto; height: var(--vg-hrow-h); padding-block: 0;
+    display: inline-flex; align-items: center;
+  }
+  .vault-graph #vg-rtip {
+    position: absolute; pointer-events: none; z-index: 8; white-space: nowrap;
+    background: var(--surface-2); border: 1px solid var(--border-strong);
+    border-radius: 5px; padding: 2px 6px;
+    font-size: 11px; font-variant-numeric: tabular-nums; color: var(--text-1);
+    box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  }
+  .vault-graph #vg-rtip[hidden] { display: none; }
+
+  .vault-graph #vg-heatwrap { overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;
+              scrollbar-color: var(--border-strong) transparent; }
+  .vault-graph #vg-heatc { display: block; cursor: pointer; margin: 0 auto; }
+  .vault-graph #vg-htip {
+    position: absolute; pointer-events: none; z-index: 7; max-width: 240px;
+    background: var(--surface-2); border: 1px solid var(--border-strong);
+    border-radius: 7px; padding: 6px 9px; font-size: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.18); display: block;
+  }
+  .vault-graph #vg-htip .t { font-weight: 600; margin-bottom: 2px; }
+  .vault-graph #vg-htip .m { color: var(--text-2); font-size: 11px; }
+
+  .vault-graph #vg-logo, .vault-graph #vg-logoInner {
+    position: absolute; display: block; pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: .95;
+    transition: opacity 380ms ease;
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    -webkit-mask-position: center;  mask-position: center;
+    -webkit-mask-size: contain;     mask-size: contain;
+  }
+  .vault-graph #vg-logoInner {
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+  .vault-graph[data-theme="light"] #vg-logo { opacity: .9; filter: saturate(1.05) brightness(.86); }
+
+  /* github#12 */
+  .vault-graph #vg-hubdrop {
+    position: absolute; display: block; pointer-events: none;
+    transform: translate(-50%, -50%); border-radius: 50%;
+    border: 2px dashed var(--text-3); opacity: .55;
+    transition: opacity 120ms linear, background-color 120ms linear;
+  }
+  .vault-graph #vg-hubdrop[hidden] { display: none; }
+  .vault-graph #vg-hubdrop[data-over="1"] {
+    border-style: solid; border-color: var(--accent); opacity: 1;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+  .vault-graph #vg-hubdrop[data-drop="out"] { border-color: var(--text-3); opacity: .32; }
+
+  .vault-graph #vg-tip {
+    position: absolute; pointer-events: none; z-index: 5; max-width: 260px;
+    background: var(--surface-2); border: 1px solid var(--border-strong);
+    border-radius: 7px; padding: 7px 9px; font-size: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.18); display: block;
+  }
+  .vault-graph #vg-tip .t { font-weight: 600; margin-bottom: 3px; }
+  .vault-graph #vg-tip .m { color: var(--text-2); font-size: 11px; }
+
+  .vault-graph #vg-detail {
+    position: absolute; right: 12px; top: 12px; width: 278px; z-index: 6;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 9px; padding: 12px; display: block;
+    box-shadow: 0 8px 28px rgba(0,0,0,.16); overflow-y: auto;
+    max-height: calc(100% - 28px - var(--controls-h) - var(--controls-inset));
+  }
+  .vault-graph #vg-detail h2 { font-size: 13px; margin: 0 22px 6px 0; line-height: 1.3; }
+  .vault-graph #vg-detail .meta { font-size: 11px; color: var(--text-2); margin-bottom: 9px; }
+  .vault-graph #vg-detail .meta span { display: inline-block; margin-right: 8px; }
+  .vault-graph #vg-detail .chip {
+    display: inline-block; font-size: 10px; padding: 1px 6px; margin: 0 3px 3px 0;
+    border: 1px solid var(--border); border-radius: 999px; color: var(--text-2);
+  }
+  .vault-graph #vg-detail .nb { font-size: 10px; text-transform: uppercase; letter-spacing: .07em;
+                color: var(--text-3); margin: 10px 0 5px; font-weight: 600; }
+  .vault-graph #vg-detail .actions {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 4px;
+  }
+  .vault-graph #vg-detail a.open {
+    display: inline-block; font-size: 11px; color: var(--accent);
+    text-decoration: none; border: 1px solid var(--accent);
+    border-radius: 6px; padding: 4px 8px;
+  }
+  .vault-graph #vg-detail a.open:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .vault-graph #vg-detail .pin svg { width: 13px; height: 13px; vertical-align: -2px; margin-right: 3px; }
+  /* github#40, design/0012 */
+  .vault-graph #vg-detail .crumbs { display: flex; align-items: center; gap: 4px; margin: 0 22px 7px 0; }
+  .vault-graph #vg-detail .crumbs ol {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 2px 0;
+    list-style: none; margin: 0; padding: 0; min-width: 0;
+  }
+  .vault-graph #vg-detail .crumbs li { display: flex; align-items: center; min-width: 0; }
+  .vault-graph #vg-detail .crumbs li + li::before {
+    content: "\203A" / ""; color: var(--text-3); font-size: 10px; padding: 0 3px;
+  }
+  .vault-graph #vg-detail .crumbs button {
+    font: inherit; font-size: 10px; color: var(--text-2); background: none; border: 0;
+    padding: 1px 2px; cursor: pointer; border-radius: 4px;
+    max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .vault-graph #vg-detail .crumbs button:hover { color: var(--text-1); background: var(--surface-1); }
+  .vault-graph #vg-detail .crumbs button.off { color: var(--text-3); font-style: italic; }
+  .vault-graph #vg-detail .crumbs .nvb {
+    flex: none; font-size: 13px; line-height: 1; color: var(--text-1);
+    border: 1px solid var(--border); padding: 1px 7px;
+  }
+  .vault-graph #vg-detail .crumbs .dots { color: var(--text-3); font-size: 10px; }
+  .vault-graph #vg-detail ul { list-style: none; margin: 0; padding: 0; }
+  .vault-graph #vg-detail li button {
+    background: none; border: 0; padding: 2px 0; font: inherit; font-size: 12px;
+    color: var(--text-2); cursor: pointer; text-align: left; width: 100%;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .vault-graph #vg-detail li button:hover { color: var(--accent); text-decoration: underline; }
+  .vault-graph #vg-detail .x {
+    position: absolute; right: 8px; top: 7px; background: none; border: 0;
+    color: var(--text-3); font-size: 16px; cursor: pointer; line-height: 1; padding: 2px 5px;
+  }
+  .vault-graph #vg-detail .x:hover { color: var(--text-1); }
+
+  /* github#73, design/0013 */
+  .vault-graph #vg-demotap {
+    position: absolute; left: 0; top: 0; z-index: 49; pointer-events: none;
+  }
+  .vault-graph #vg-demotap[hidden] { display: none; }
+  .vault-graph #vg-demotap span {
+    position: absolute; left: 0; top: 0; display: block;
+    width: 30px; height: 30px; margin: -15px 0 0 -15px;
+    border: 2px solid #fff; border-radius: 50%;
+    opacity: 0; transform: scale(.3);
+  }
+  .vault-graph #vg-demotap span:last-child {
+    border-color: var(--accent); border-width: 3px;
+  }
+  .vault-graph #vg-demotap span.armed { opacity: .95; transform: scale(.3); transition: none; }
+  .vault-graph #vg-demotap span.go {
+    opacity: 0; transform: scale(2.7);
+    transition: transform .45s ease-out, opacity .45s ease-out;
+  }
+
+  .vault-graph #vg-democursor {
+    position: absolute; left: 0; top: 0; z-index: 50; pointer-events: none;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.45));
+  }
+  .vault-graph #vg-democursor[hidden] { display: none; }
+  /* github#73, design/0013 */
+  .vault-graph #vg-democursor .finger { display: none; }
+
+  .vault-graph .ctxmenu {
+    position: absolute; z-index: 9; width: 176px;
+    background: var(--surface-2); border: 1px solid var(--border-strong);
+    border-radius: 8px; padding: 8px; box-shadow: 0 8px 28px rgba(0,0,0,.22);
+  }
+  /* github#77 */
+  .vault-graph .ctxmenu .sws {
+    display: grid; grid-template-columns: repeat(3, max-content); gap: 4px;
+    margin-bottom: 6px; justify-content: center;
+  }
+  .vault-graph .ctxmenu .auto { width: 100%; }
+
+  /* github#34 */
+  .vault-graph .ctxmenu .vis {
+    width: 100%; margin-top: 6px; display: flex; align-items: center;
+    justify-content: center; gap: 5px;
+  }
+  .vault-graph .ctxmenu .vis svg { width: 14px; height: 14px; flex: none; }
+
+  /* github#165 */
+  .vault-graph .ctxmenu .vis:first-child { margin-top: 0; }
+  .vault-graph .ctxmenu .devrow {
+    display: block; margin-top: 8px; padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+  .vault-graph .ctxmenu .devrow .lbl { margin: 0 0 5px; }
+  .vault-graph .ctxmenu .devrow .mini { justify-content: center; }
+  .vault-graph .ctxmenu .devrow .mini button { flex: 1 1 auto; text-align: center; }
+
+  .vault-graph .scrsub { margin-left: 14px; }
+  .vault-graph .scrsub .scrh .nm { font-size: 10px; }
+  .vault-graph .scrsub .sw {
+    width: 10px; height: 10px; flex: 0 0 auto; margin-right: 1px;
+  }
+  .vault-graph .scrsub .ct {
+    color: var(--text-3); font-variant-numeric: tabular-nums; font-size: 10px;
+    margin: 0 4px;
+  }
+
+  .vault-graph #vg-hits { margin-top: 6px; max-height: 168px; overflow-y: auto; }
+  .vault-graph #vg-hits button {
+    display: block; width: 100%; text-align: left; font: inherit; font-size: 12px;
+    background: none; border: 0; padding: 3px 5px; border-radius: 4px;
+    color: var(--text-2); cursor: pointer;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .vault-graph #vg-hits button:hover { background: var(--surface-2); color: var(--text-1); }
+
+  .vault-graph #vg-busy {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    background: var(--surface-1); z-index: 20; font-size: 13px; color: var(--text-2);
+  }
+
+  /* github#144 */
+  .vault-graph #vg-glost {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    z-index: 8; max-width: min(88%, 420px); pointer-events: none;
+    background: var(--surface-2); border: 1px solid var(--border-strong);
+    border-radius: 7px; padding: 7px 11px; font-size: 12px; color: var(--text-1);
+    box-shadow: 0 6px 20px rgba(0,0,0,.18); display: block; text-align: center;
+  }
+
+  /* github#82, design/0013 */
+  @media not all and (max-width: 720px) {
+    .vault-graph[data-sheet="off"] { grid-template-columns: 1fr; }
+    /* github#73, design/0013 */
+    .vault-graph[data-sheet="off"] #vg-sidebar { display: none; }
+  }
+
+  /* github#73, design/0013 */
+  @media (max-width: 720px) {
+    /* github#131, design/0019 */
+    .vault-graph #vg-tabs { display: none; }
+    .vault-graph { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+    .vault-graph #vg-sidebar {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 8;
+      max-height: 72%; width: auto;
+      border-right: 0; border-top: 1px solid var(--border-strong);
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 -10px 28px rgb(0 0 0 / .38);
+      transform: translateY(101%); transition: transform .18s ease-out, visibility .18s;
+      visibility: hidden;
+    }
+    .vault-graph[data-sheet="on"] #vg-sidebar { transform: translateY(0); visibility: visible; }
+    /* github#73, design/0013 */
+    .vault-graph[data-sheet="on"] #vg-sidebar {
+      max-height: min(72%, calc(100% - var(--vg-canvas-top, 0px)));
+    }
+    .vault-graph[data-band="on"][data-sheet="on"] .brand { padding-left: 100px; }
+    .vault-graph #vg-heat { display: none; }
+    .vault-graph[data-band="on"] #vg-heat:not([hidden]) { display: flex; }
+    /* github#73, design/0013 */
+    .vault-graph #vg-stage { grid-template-rows: 1fr; }
+    .vault-graph[data-band="on"] #vg-stage { grid-template-rows: auto 1fr; }
+    /* github#73, design/0013 */
+    .vault-graph #vg-detail {
+      left: 12px; right: 12px; width: auto;
+      top: auto; bottom: 12px; max-height: 46%;
+    }
+    /* github#73, design/0013 */
+    .vault-graph #vg-cam { top: var(--controls-inset); bottom: auto; }
+    /* github#79, design/0017 */
+    .vault-graph { --ov-size: 72px; }
+    .vault-graph #vg-ov { top: var(--controls-inset); bottom: auto; }
+    /* github#82, design/0013 */
+    .vault-graph #vg-mob { z-index: 9; }
+    .vault-graph #vg-mob button { opacity: .8; width: 44px; height: 44px; }
+    /* github#144 */
+    .vault-graph #vg-glost {
+      left: 12px; right: 12px; transform: none; max-width: none; z-index: 10;
+    }
+    /* github#73, design/0013 */
+    .vault-graph #vg-heat .hrow { flex-wrap: wrap; row-gap: 6px; }
+    .vault-graph #vg-heatnote { flex-basis: 100%; order: 3; }
+    .vault-graph #vg-rangebox { order: 4; }
+    /* github#70, design/0013 */
+    .vault-graph #vg-recent { order: 2; flex-basis: 100%; flex-wrap: wrap; row-gap: 4px; }
+    .vault-graph #vg-democursor .arrow { display: none; }
+    .vault-graph #vg-democursor .finger { display: block; }
+    /* github#73, design/0013 */
+    .vault-graph .lg .only, .vault-graph .lgs .only { opacity: 1; }
+  }
+  @media (max-width: 720px) and (prefers-reduced-motion: reduce) {
+    .vault-graph #vg-sidebar { transition: none; }
+  }
+
+  /* github#170, design/0013 */
+  @media (max-width: 720px) and (pointer: coarse) {
+    /* github#170, design/0013 */
+    .vault-graph {
+      grid-template-columns: 1fr; grid-template-rows: auto auto;
+      overflow-y: auto; overflow-x: hidden;
+    }
+    /* github#170, design/0013 */
+    .vault-graph #vg-stage,
+    .vault-graph[data-band="off"] #vg-stage,
+    .vault-graph[data-band="on"] #vg-stage {
+      grid-template-rows: auto auto; overflow: visible; order: 1;
+    }
+    /* github#170, design/0013 */
+    .vault-graph #vg-heat { order: 1; }
+    /* github#170, design/0013 */
+    .vault-graph #vg-sidebar,
+    .vault-graph[data-sheet="on"] #vg-sidebar,
+    .vault-graph[data-sheet="off"] #vg-sidebar {
+      position: static; transform: none; visibility: visible; order: 2;
+      max-height: none; width: auto; overflow-y: visible;
+      border-top: 1px solid var(--border); border-right: 0; border-radius: 0;
+      box-shadow: none; z-index: auto; transition: none;
+    }
+    /* github#170, design/0013 */
+    .vault-graph[data-band="on"][data-sheet="on"] .brand { padding-left: 0; }
+
+    /* github#170, design/0013 */
+    .vault-graph #vg-canvas {
+      order: 2; overflow: visible;
+      display: grid; grid-template-columns: 1fr; grid-template-rows: auto auto auto;
+    }
+    /* github#170, design/0013 */
+    .vault-graph #vg-graph {
+      position: relative; inset: auto; overflow: hidden;
+      grid-row: 1; grid-column: 1; justify-self: stretch; align-self: start;
+      width: 100%; height: auto; aspect-ratio: 1 / 1;
+    }
+    /* github#73, design/0013 */
+    .vault-graph #vg-graph .vg-layer-mouse { touch-action: pan-y; }
+    /* github#170, design/0013 */
+    .vault-graph #vg-cam {
+      position: static; z-index: auto; grid-row: 2; grid-column: 1; justify-self: center;
+      flex-direction: row; justify-content: center; gap: 10px; padding: 8px 0;
+    }
+    .vault-graph #vg-cam button, .vault-graph #vg-mob button {
+      width: 44px; height: 44px; opacity: .8;
+    }
+    /* github#170, design/0013 */
+    .vault-graph #vg-cam button#vg-pan { display: none; }
+    /* github#170, design/0013 */
+    .vault-graph #vg-mob button#vg-sheet { display: none; }
+    /* github#79, design/0017 */
+    .vault-graph #vg-ov { display: none; }
+    /* github#170, design/0013 */
+    .vault-graph #vg-detail {
+      position: static; left: auto; right: auto; top: auto; bottom: auto; grid-row: 3; grid-column: 1;
+      width: auto; max-height: none; margin: 10px 12px 12px; z-index: auto;
+    }
+
+    /* github#70, design/0013 */
+    .vault-graph #vg-heat .hrow { --vg-hrow-h: 32px; row-gap: 6px; gap: 8px; }
+    .vault-graph #vg-heatsrc button { padding: 0 10px; }
+    /* github#70, design/0010, design/0013 */
+    /* github#178 -- a content-sized basis wraps a line meant to scroll */
+    .vault-graph #vg-recent {
+      order: 0; flex: 1 1 0;
+      flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; min-width: 0;
+      align-items: center; height: var(--vg-hrow-h); row-gap: 0;
+    }
+    .vault-graph #vg-recent::-webkit-scrollbar { display: none; }
+    .vault-graph #vg-recent .chip { height: 26px; flex: 0 0 auto; }
+    /* github#178 -- the widest chip, and a phone has no room for it */
+    .vault-graph #vg-recent [data-kind="open"] { display: none; }
+    /* github#170, design/0013 */
+    .vault-graph #vg-compact { order: 4; margin-left: 0; }
+    .vault-graph #vg-rangebox { flex-wrap: wrap; row-gap: 6px; margin-left: 0; }
+    .vault-graph #vg-rangebox .dt { font-size: 12px; padding: 0 5px; width: 98px; }
+
+    /* github#170, design/0013 */
+    .vault-graph #vg-years { height: 22px; margin-top: -3px; }
+    .vault-graph #vg-years button {
+      height: 22px; padding: 0 6px; min-width: 26px;
+      font: 600 10.5px/22px ui-sans-serif, "Segoe UI", system-ui, sans-serif;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* github#170, design/0013 */
+    .vault-graph .dimseg.dimfull button { min-height: 44px; }
+    .vault-graph .dimall button,
+    .vault-graph .tools button { min-height: 44px; min-width: 44px; }
+    .vault-graph #vg-q { height: 44px; font-size: 14px; }
+    /* github#170, design/0013 */
+    .vault-graph .tw, .vault-graph .eye { width: 44px; height: 44px; padding: 0; }
+    .vault-graph .lg { min-height: 44px; }
+    /* github#170, design/0013 */
+    .vault-graph .lg .only, .vault-graph .lgs .only {
+      min-width: 44px; height: 44px; padding: 0 8px;
+      display: flex; align-items: center; justify-content: center;
+      border: 0; border-radius: 10px;
+      background: color-mix(in oklab, var(--text-3) 12%, transparent);
+    }
+  }

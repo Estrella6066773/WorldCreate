@@ -1,0 +1,79 @@
+.ba-translation { display: block; margin: .45em 0 .7em; padding-left: .8em; border-left: 2px solid var(--interactive-accent); color: var(--text-muted); font-size: .95em; line-height: 1.65; white-space: pre-wrap; font-weight: normal; }
+.ba-error { border-color: var(--text-error); }
+.ba-settings { --ba-section-radius: 10px; --ba-section-inset: 16px; --ba-control-width: 280px; }
+.ba-settings .ba-settings-intro { margin: 0 0 18px; }
+.ba-settings-intro .setting-item-name { margin: 0; padding: 0; font-size: 22px; font-weight: 700; line-height: 1.35; letter-spacing: .02em; }
+.ba-settings-intro p { margin: 5px 0 0; color: var(--text-muted); font-size: 13px; line-height: 1.5; }
+.ba-settings-status { padding: 0 var(--ba-section-inset); border: 1px solid var(--background-modifier-border); border-radius: var(--ba-section-radius); background: var(--background-secondary); }
+.ba-settings-status .setting-item { border: 0; }
+.ba-settings > .setting-item-heading { margin: 24px 0 10px; padding: 0; font-size: 13px; line-height: 1.5; font-weight: 600; color: var(--text-muted); }
+.ba-settings-section { margin: 0; border: 1px solid var(--background-modifier-border); border-radius: var(--ba-section-radius); background: var(--background-secondary); overflow: hidden; }
+.ba-settings-section + .ba-settings-section { margin-top: 10px; }
+.ba-settings-section > summary { display: flex; align-items: center; gap: 16px; padding: 12px var(--ba-section-inset); cursor: pointer; list-style: none; user-select: none; }
+.ba-settings-section > summary::-webkit-details-marker { display: none; }
+.ba-settings-section > summary:hover { background: var(--background-modifier-hover); }
+.ba-settings-section > summary:focus-visible { outline: none; box-shadow: inset 3px 0 var(--interactive-accent); }
+.ba-settings-section > summary::after { content: ''; flex: none; width: 7px; height: 7px; margin-right: 4px; border-right: 1.5px solid var(--text-muted); border-bottom: 1.5px solid var(--text-muted); transform: rotate(-45deg); transition: transform 150ms ease; }
+.ba-settings-section[open] > summary::after { transform: rotate(45deg); }
+.ba-section-label { flex: 1; min-width: 0; }
+.ba-section-title { display: block; font-size: 14px; line-height: 1.4; font-weight: 600; color: var(--text-normal); }
+.ba-section-description { display: block; margin-top: 3px; font-size: 12px; line-height: 1.5; color: var(--text-muted); overflow-wrap: anywhere; }
+.ba-section-body { padding: 0 var(--ba-section-inset) 8px; border-top: 1px solid var(--background-modifier-border); background: var(--background-primary); }
+.ba-settings .setting-item { gap: 16px; padding: 13px 0; }
+.ba-settings .setting-item-info { min-width: 0; margin-inline: 0; }
+.ba-settings .setting-item-name { overflow-wrap: anywhere; }
+.ba-settings .setting-item-description { line-height: 1.5; }
+.ba-settings .setting-item-control { flex-wrap: wrap; gap: 8px; }
+.ba-settings input[type=text], .ba-settings input[type=password] { width: var(--ba-control-width); max-width: 100%; min-width: 0; }
+.ba-settings select { width: var(--ba-control-width); max-width: 100%; min-width: 0; }
+.ba-settings :is(input[type=text], input[type=password], select, button) { min-height: var(--input-height, 30px); }
+.ba-settings > .setting-item-heading .setting-item-name { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.ba-settings textarea { min-height: 90px; width: 100%; }
+.ba-plugin-list .setting-item { align-items: center; }
+.ba-plugin-list .setting-item-control { flex-shrink: 0; }
+.ba-list-summary, .ba-settings-note, .ba-service-feedback, .ba-section-body > p { color: var(--text-muted); font-size: 12px; line-height: 1.65; overflow-wrap: anywhere; }
+.ba-list-summary { margin: 0 0 6px; }
+.ba-service-feedback:empty { display: none; }
+.ba-service-feedback { color: var(--text-normal); }
+.ba-keychain-guide { margin: 8px 0 12px; padding: 14px 16px; border: 1px solid var(--background-modifier-border); border-radius: 10px; background: var(--background-secondary); font-size: 12px; line-height: 1.65; color: var(--text-muted); }
+.ba-keychain-guide-title { margin-bottom: 10px; color: var(--text-normal); font-size: 13px; font-weight: 600; }
+.ba-keychain-guide ol { margin: 0; padding: 0; list-style: none; counter-reset: keychain-step; }
+.ba-keychain-guide li { position: relative; padding-left: 28px; margin: 0; counter-increment: keychain-step; overflow-wrap: anywhere; }
+.ba-keychain-guide li + li { margin-top: 9px; }
+.ba-keychain-guide li::before { content: counter(keychain-step); position: absolute; left: 0; top: 1px; display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: var(--background-modifier-hover); color: var(--text-accent); font-size: 11px; font-weight: 600; }
+.ba-keychain-guide li strong { margin-right: 8px; font-weight: 600; color: var(--text-normal); }
+.ba-keychain-guide .ba-keychain-guide-footnote { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--background-modifier-border); font-size: 11px; }
+.ba-empty { padding: 16px 0; }
+.ba-advanced { margin: 8px 0; }
+.ba-advanced > summary { cursor: pointer; color: var(--text-muted); font-size: 13px; }
+.ba-settings { container-type: inline-size; }
+@container (max-width: 480px) {
+ .ba-settings .setting-item { flex-wrap: wrap; gap: 10px; }
+ .ba-settings .setting-item-info { flex: 1 1 100%; }
+ .ba-settings .setting-item-control { justify-content: flex-start; margin-left: 0; max-width: 100%; }
+ .ba-settings :is(input[type=text], input[type=password], select) { width: 100%; }
+ .ba-settings .setting-item-control { flex: 1 1 100%; }
+ .ba-settings .setting-item-control > :is(input, select) { flex: 1 1 180px; }
+ .ba-settings-status .setting-item { flex-wrap: nowrap; }
+ .ba-settings-status .setting-item-info { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .ba-settings-section > summary::after { transition: none; } }
+/* Keep host themes from adding a second card around every native setting row. */
+.ba-settings.ba-settings .setting-item { align-items: center; background: transparent; border-radius: 0; margin: 0; padding: 13px 0; }
+.ba-settings.ba-settings > .setting-item-heading { margin: 24px 0 10px; padding: 0; }
+.ba-settings.ba-settings .setting-item-control { width: var(--ba-control-width); flex: 0 0 var(--ba-control-width); }
+.ba-settings.ba-settings .setting-item::before { left: 0; right: 0; }
+.ba-settings.ba-settings .ba-settings-status .setting-item-info { flex: 1 1 auto; }
+.ba-settings.ba-settings .ba-settings-status .setting-item-control { flex: 0 0 auto; width: auto; }
+
+/* A custom setting definition owns the whole page, not a theme setting card. */
+.setting-items.ba-settings-container { background: transparent; border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+.setting-items > .setting-item.ba-custom-settings { display: block; width: 100%; min-width: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.ba-settings.ba-settings .ba-settings-intro .setting-item { padding: 0; border: 0; }
+
+.ba-settings.ba-settings .setting-item-control :is(input[type=text], input[type=password], select) { width: 100%; flex: 1 1 0; max-width: 100%; min-width: 0; }
+@container (max-width: 480px) {
+ .ba-settings.ba-settings .setting-item-control { flex: 1 1 100%; width: 100%; }
+ .ba-settings.ba-settings .setting-item-control :is(input[type=text], input[type=password], select) { width: 100%; flex: 1 1 180px; }
+ .ba-settings.ba-settings .ba-settings-status .setting-item-control { flex: 0 0 auto; width: auto; }
+}

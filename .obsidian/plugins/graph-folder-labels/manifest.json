@@ -1,0 +1,9 @@
+{
+  "id": "graph-folder-labels",
+  "name": "Graph Folder Labels",
+  "version": "1.2.0",
+  "minAppVersion": "1.4.0",
+  "description": "Show folder notes as their folder name in the graph. Add a parent folder prefix only when two notes would otherwise share the same label.",
+  "author": "CoreJack",
+  "isDesktopOnly": false
+}
