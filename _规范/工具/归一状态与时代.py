@@ -291,6 +291,7 @@ def main():
 
             old_state = [unquote(v) for v in fields.get('状态', [])]
             target, note, keep = None, None, None
+            unmapped_here = False
             if old_state:
                 if len(old_state) > 1:
                     conflicts.append((rel, old_state))
@@ -307,16 +308,22 @@ def main():
                         keep = value  # 模板占位符，原样保留
                     else:
                         unmapped[value] += 1
-            if target:
-                fields['状态'] = [target]
-            elif keep:
-                fields['状态'] = [keep]
+                        unmapped_here = True
+            if unmapped_here:
+                # 有取值无法归位：`状态` 与 `状态说明` 整块原样保留。
+                # 只改一半会留下挂在不存在的状态下面的说明，等人判断整块怎么改。
+                pass
             else:
-                fields.pop('状态', None)
-            if note:
-                fields['状态说明'] = [note]
-            # 映射没有给出新说明时，保留原「状态说明」。
-            # 该字段是手写内容，删掉之后下一次运行也补不回来。
+                if target:
+                    fields['状态'] = [target]
+                elif keep:
+                    fields['状态'] = [keep]
+                else:
+                    fields.pop('状态', None)
+                if note:
+                    fields['状态说明'] = [note]
+                # 映射没有给出新说明时，保留原「状态说明」。
+                # 该字段是手写内容，删掉之后下一次运行也补不回来。
 
             eras = []
             raw_eras = [unquote(v) for v in fields.get('时代', [])]

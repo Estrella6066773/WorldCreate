@@ -11,6 +11,8 @@
 .obsidian/workspace-mobile.json
 .obsidian/cache/
 .obsidian/plugins/*/node_modules/
+# 图谱视图的缩放与位置随每次打开变化，不属于设定内容
+.obsidian/graph.json
 
 # Obsidian 本地回收站
 .trash/
